@@ -30,11 +30,11 @@ from metric import compute_rouge_l, compute_rouge_n
 
 MAX_ABS_LEN = 30
 
-try:
-    DATA_DIR = os.environ['DATA']
-except KeyError:
-    print('please use environment variable to specify data directories')
-
+#try:
+#    DATA_DIR = os.environ['DATA']
+#except KeyError:
+#    print('please use environment variable to specify data directories')
+DATA_DIR = "data/mydata/"
 
 class RLDataset(CnnDmDataset):
     """ get the article sentences only (for decoding use)"""

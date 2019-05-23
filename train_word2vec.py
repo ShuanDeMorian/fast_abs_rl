@@ -13,10 +13,11 @@ import gensim
 from utils import count_data
 
 
-try:
-    DATA_DIR = os.environ['DATA']
-except KeyError:
-    print('please use environment variable to specify data directories')
+#try:
+#    DATA_DIR = os.environ['DATA']
+#except KeyError:
+#    print('please use environment variable to specify data directories')
+DATA_DIR = "data/mydata/"
 
 class Sentences(object):
     """ needed for gensim word2vec training"""

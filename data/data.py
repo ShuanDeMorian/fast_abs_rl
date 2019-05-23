@@ -6,7 +6,6 @@ from os.path import join
 
 from torch.utils.data import Dataset
 
-
 class CnnDmDataset(Dataset):
     def __init__(self, split: str, path: str) -> None:
         assert split in ['train', 'val', 'test']

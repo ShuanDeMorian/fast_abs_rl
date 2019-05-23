@@ -30,10 +30,11 @@ from data.batcher import BucketedGenerater
 
 BUCKET_SIZE = 6400
 
-try:
-    DATA_DIR = os.environ['DATA']
-except KeyError:
-    print('please use environment variable to specify data directories')
+#try:
+#    DATA_DIR = os.environ['DATA']
+#except KeyError:
+#    print('please use environment variable to specify data directories')
+DATA_DIR = "data/mydata/"
 
 class ExtractDataset(CnnDmDataset):
     """ article sentences -> extraction indices
@@ -67,16 +68,20 @@ def build_batchers(net_type, word2id, cuda, debug):
         num_workers=4 if cuda and not debug else 0,
         collate_fn=coll_fn_extract
     )
+    #train_batcher = BucketedGenerater(train_loader, prepro, sort_key, batchify,
+    #                                  single_run=False, fork=not debug)
     train_batcher = BucketedGenerater(train_loader, prepro, sort_key, batchify,
-                                      single_run=False, fork=not debug)
+                                      single_run=False, fork=False)
 
     val_loader = DataLoader(
         ExtractDataset('val'), batch_size=BUCKET_SIZE,
         shuffle=False, num_workers=4 if cuda and not debug else 0,
         collate_fn=coll_fn_extract
     )
+    #val_batcher = BucketedGenerater(val_loader, prepro, sort_key, batchify,
+    #                                single_run=True, fork=not debug)
     val_batcher = BucketedGenerater(val_loader, prepro, sort_key, batchify,
-                                    single_run=True, fork=not debug)
+                                    single_run=True, fork=False)
     return train_batcher, val_batcher
 
 

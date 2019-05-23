@@ -12,11 +12,11 @@ from utils import count_data
 from metric import compute_rouge_l
 
 
-try:
-    DATA_DIR = os.environ['DATA']
-except KeyError:
-    print('please use environment variable to specify data directories')
-
+#try:
+#    DATA_DIR = os.environ['DATA']
+#except KeyError:
+#    print('please use environment variable to specify data directories')
+DATA_DIR = "data/mydata/"
 
 def _split_words(texts):
     return map(lambda t: t.split(), texts)
